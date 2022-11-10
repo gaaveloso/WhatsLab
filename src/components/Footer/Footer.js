@@ -8,23 +8,28 @@ function Footer(props) {
   const [message, setMessage] = useState("");
 
   const onChangeInput = (event) => {
-    setMessage(event.target.value)
+    setMessage(event.target.value);
   };
 
   const onKeyDownInput = (event) => {
-    if(event.key === "Enter"){
-        const novaMensage = [...props.messages]
+    if (event.key === "Enter") {
+      const novaMensage = [...props.messages];
 
-        const novaPessoaMensagem = {
-          person:props.person,
-          message:message
-        }
-
-        novaMensage.push(novaPessoaMensagem)
-        props.setMessages(novaMensage)
-        setMessage("")
+      const novaPessoaMensagem = {
+        person: props.person,
+        message: message,
+        idAutor: Date.now(),
+        horario: new Date().toLocaleString("pt-BR", {
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+        }),
+      };
+      novaMensage.push(novaPessoaMensagem);
+      props.setMessages(novaMensage);
+      setMessage("");
     }
-  }
+  };
 
   return (
     <FooterMain>
@@ -33,7 +38,12 @@ function Footer(props) {
           <img src={smile} alt="smile icon" />
         </a>
 
-        <input type={"text"} value={message} onChange={onChangeInput} onKeyDown={onKeyDownInput}/>
+        <input
+          type={"text"}
+          value={message}
+          onChange={onChangeInput}
+          onKeyDown={onKeyDownInput}
+        />
 
         <a href="#">
           <img src={paperclip} alt="paperclip icon" />

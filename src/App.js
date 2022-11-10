@@ -6,8 +6,7 @@ import Footer from "./components/Footer/Footer";
 import { useState } from "react";
 
 function App() {
-
-  const [person,setPerson] = useState("me")
+  const [person, setPerson] = useState("me");
   const [messages, setMessages] = useState([]);
 
   // console.log(person)
@@ -15,17 +14,9 @@ function App() {
 
   return (
     <Main>
-      <Header 
-        person={person}
-        setPerson={setPerson}
-      />
-      <ChatBox 
-        messages={messages} 
-       />
-      <Footer 
-        person={person}
-        messages={messages} 
-        setMessages={setMessages} />
+      <Header person={person} setPerson={setPerson} />
+      <ChatBox person={person} messages={messages} setMessages={setMessages} />
+      <Footer person={person} messages={messages} setMessages={setMessages} />
     </Main>
   );
 }
